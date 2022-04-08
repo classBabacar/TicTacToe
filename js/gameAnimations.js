@@ -21,32 +21,25 @@
      canvas.width = yMax;
      canvas.height = xMax;
  
-     // Vertical Line One (from left to right)
      ctx.beginPath();
      ctx.strokeStyle = 'blue';
+
+     // Vertical Line One (from left to right)
      ctx.moveTo(200, 0);
      ctx.lineTo(200, yMax);
-     ctx.stroke();
  
      // Vertical Line Two (from left to right)
-     ctx.beginPath();
-     ctx.strokeStyle = 'green';
      ctx.moveTo(400, 0);
      ctx.lineTo(400, yMax);
-     ctx.stroke();
  
      // Horizontal Line One (from top to bottom)
-     ctx.beginPath();
-     ctx.strokeStyle = 'red';
      ctx.moveTo(0, 200);
      ctx.lineTo(xMax, 200);
-     ctx.stroke();
  
      // Horizontal Line Two (from top to bottom)
-     ctx.beginPath();
-     ctx.strokeStyle = 'purple';
      ctx.moveTo(0, 400);
      ctx.lineTo(xMax, 400);
+     
      ctx.stroke();
  }
  
@@ -136,7 +129,6 @@ function makeMoveHelper(position){
     }
 }
 
-
 function makeMove(position, moveNumber){
     let startingX = 0;
     let startingY = 0;
@@ -147,22 +139,24 @@ function makeMove(position, moveNumber){
             startingY += 200;
         }
     }
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
     
     if(moveNumber % 2 == 0){
-        ctx.beginPath();
-        ctx.strokeStyle = 'blue';
+        // This makes an O.
         ctx.arc(startingX + 100, startingY + 100, 75, 0, Math.PI * 2, true); // Outer circle
-        ctx.stroke();
-    }else{
-        ctx.beginPath();
-        ctx.strokeStyle = 'blue';
+    }else if(moveNumber % 2 == 1){
+        // Top Left to Bottom Right Line
         ctx.moveTo(startingX + 25, startingY + 25);
         ctx.lineTo(startingX + 200 - 25, startingY + 200 - 25);
-    
+
+        // Top Right to Bottom Left Line
         ctx.moveTo(startingX + 200 -25, startingY + 25);
         ctx.lineTo(startingX + 25, startingY + 200 - 25);
-        ctx.stroke();
+
+        // This makes an X
     }
+    ctx.stroke();
 }
 
 makeBoard();
