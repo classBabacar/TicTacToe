@@ -10,9 +10,9 @@ class TicTacToe {
         this.moveNumber = 0;
     }
 
-    isValidMove(position){
+    isValidMove(position, board){
         const [arrayRow, arrayCol] = this.getPositionArrayIndex(position);
-        if(this.board[arrayRow][arrayCol] == '#'){
+        if(board[arrayRow][arrayCol] == '#'){
             return true;
         }
         return false;
@@ -20,7 +20,7 @@ class TicTacToe {
 
     storeMove(moveNumber, position){
         const [arrayRow, arrayCol] = this.getPositionArrayIndex(position);
-        this.board[arrayRow][arrayCol] = moveNumber % 2 == 0 ? 'X' : 'O';
+        this.board[arrayRow][arrayCol] = moveNumber % 2 == 0 ? 'O' : 'X';
     }
 
     getPositionArrayIndex(position){
@@ -114,4 +114,64 @@ class TicTacToe {
         }
         return 0;
     }
+
+    isGameOver(board, moveNumber){
+        const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
+        for(let i = 0; i < 3; ++i){
+            if(board[i][0] == playerSymbol && board[i][1] == playerSymbol && board[i][2] == playerSymbol){
+                console.log("Winner", playerSymbol)
+                return true;
+            }
+            if(board[0][i] == playerSymbol && board[1][i] == playerSymbol && board[2][i] == playerSymbol){
+                console.log("Winner", playerSymbol)
+                return true;
+            }
+        }
+
+        if(board[0][0] == playerSymbol && board[1][1] == playerSymbol && board[2][2] == playerSymbol){
+            console.log("Winner", playerSymbol)
+            return true;
+        }
+
+        if(board[2][0] == playerSymbol && board[1][1] == playerSymbol && board[0][2] == playerSymbol){
+            console.log("Winner", playerSymbol)
+            return true;
+        }
+        return this.isTie(this.board);
+    }
+
+    isTie(board){
+        let pieceCount = 0;
+        for(let row = 0; row < 3; ++row){
+            for(let col = 0; col < 3; ++col){
+                if(board[row][col] == 'X' || board[row][col] == 'O'){
+                    pieceCount++;
+                }
+            }
+        }
+        if(pieceCount == 9){
+            console.log("Tie")
+            return true;
+        }
+
+        return false;
+    }
+
+    getPlayerTurnResponse(moveNumber){
+        const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
+        const playerResponse = document.getElementById("playerReponse");
+        playerResponse.innerHTML = "It's Your Turn: " +  playerSymbol;
+    }
+
+    showWinner(moveNumber){
+        const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
+        const playerResponse = document.getElementById("playerReponse");
+        playerResponse.innerHTML = "YOU ARE THE WINNER: " +  playerSymbol;
+    }
+
+    showTie(){
+        const playerResponse = document.getElementById("playerReponse");
+        playerResponse.innerHTML = "THIS IS TIE...REMATCH!!!!!!!!!!!";
+    }
 }
+

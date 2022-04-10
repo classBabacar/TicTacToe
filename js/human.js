@@ -16,19 +16,22 @@ class HumanPlayer extends TicTacToe{
     }
     
     async play(){
-        let a = 0;
-        while(a < 9){
+        while(!this.isGameOver(this.board, this.moveNumber - 1)){
+            this.getPlayerTurnResponse(this.moveNumber);
             let [x,y] = await this.getHumanMove();
             let position = this.boxSelection(x, y);
-            if(position > 0 && this.moveNumber % 2 == 0 && this.isValidMove(position)){
+            if(position > 0 && this.moveNumber % 2 == 0 && this.isValidMove(position, this.board)){
                 this.storeMove(this.moveNumber, position);
                 this.makeMove(this.boxSelection(x, y), this.moveNumber);
-            }else if (position > 0 && this.moveNumber % 2 == 1 && this.isValidMove(position)){
+            }else if (position > 0 && this.moveNumber % 2 == 1 && this.isValidMove(position, this.board)){
                 this.storeMove(this.moveNumber, position);
                 this.makeMove(this.boxSelection(x, y), this.moveNumber);
             }
-            a++;
-            console.log("moveNumber", this.moveNumber)
+        }
+        if(this.isTie(this.board)){
+            this.showTie()
+        }else{
+            this.showWinner(this.moveNumber - 1);
         }
     }
 }
