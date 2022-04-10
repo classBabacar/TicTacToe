@@ -1,4 +1,4 @@
-class HumanPlayer extends TicTacToe{
+export default class HumanPlayer extends TicTacToe{
     constructor(p1, p2){
         super(p1, p2)
     }
@@ -35,6 +35,3 @@ class HumanPlayer extends TicTacToe{
         }
     }
 }
-
-let ticTacToe = new HumanPlayer("p1", "p2");
-ticTacToe.play();

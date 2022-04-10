@@ -1,3 +1,7 @@
+
+ const canvas = document.getElementById("canvas");
+ const ctx = canvas.getContext("2d");
+
 class TicTacToe {
     constructor(p1, p2){
         this.board = [
@@ -173,5 +177,13 @@ class TicTacToe {
         const playerResponse = document.getElementById("playerReponse");
         playerResponse.innerHTML = "THIS IS TIE...REMATCH!!!!!!!!!!!";
     }
-}
 
+    restart(){
+        this.board = [
+            ['#', '#', '#'],
+            ['#', '#', '#'],
+            ['#', '#', '#']
+        ];
+        this.moveNumber = 0;
+    }
+}

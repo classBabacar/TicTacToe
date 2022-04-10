@@ -10,7 +10,8 @@
 
  const canvas = document.getElementById("canvas");
  const ctx = canvas.getContext("2d");
- 
+ import HumanPlayer from './human.js';
+
  function makeBoard(){
      const yMax = 600;
      const xMax = 600;
@@ -43,4 +44,18 @@
      ctx.stroke();
  }
 
- makeBoard();
+ let playerObj;
+ function pvp(){
+    makeBoard();
+    playerObj = new HumanPlayer("p1", "p2");
+    playerObj.restart();
+    playerObj.play();
+ }
+
+let pvpbtn = document.getElementById("newgame");
+pvpbtn.addEventListener("click", function() {
+    pvp()}, false);
+
+let restartbtn = document.getElementById("pvp");
+restartbtn.addEventListener("click", function() {
+    pvp()}, false);
