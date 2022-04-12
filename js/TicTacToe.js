@@ -123,25 +123,21 @@ class TicTacToe {
         const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
         for(let i = 0; i < 3; ++i){
             if(board[i][0] == playerSymbol && board[i][1] == playerSymbol && board[i][2] == playerSymbol){
-                console.log("Winner", playerSymbol)
                 return true;
             }
             if(board[0][i] == playerSymbol && board[1][i] == playerSymbol && board[2][i] == playerSymbol){
-                console.log("Winner", playerSymbol)
                 return true;
             }
         }
 
         if(board[0][0] == playerSymbol && board[1][1] == playerSymbol && board[2][2] == playerSymbol){
-            console.log("Winner", playerSymbol)
             return true;
         }
 
         if(board[2][0] == playerSymbol && board[1][1] == playerSymbol && board[0][2] == playerSymbol){
-            console.log("Winner", playerSymbol)
             return true;
         }
-        return this.isTie(this.board);
+        return false;
     }
 
     isTie(board){
@@ -154,8 +150,7 @@ class TicTacToe {
             }
         }
         if(pieceCount == 9){
-            console.log("Tie")
-            return true;
+            return !this.isGameOver(board, 1) && !this.isGameOver(board, 0) ;
         }
 
         return false;
@@ -185,5 +180,7 @@ class TicTacToe {
             ['#', '#', '#']
         ];
         this.moveNumber = 0;
+        const playerResponse = document.getElementById("playerReponse");
+        playerResponse.innerHTML = "";
     }
 }

@@ -10,6 +10,7 @@
 
  const canvas = document.getElementById("canvas");
  const ctx = canvas.getContext("2d");
+import AIPlayer from './AIPlayer.js';
  import HumanPlayer from './HumanPlayer.js';
 
  function makeBoard(){
@@ -52,6 +53,14 @@
     playerObj.play();
  }
 
+ function pvai(){
+    makeBoard();
+    playerObj = new AIPlayer("p1", "p2");
+    playerObj.restart();
+    playerObj.AIplay();
+ }
+
+
 let pvpbtn = document.getElementById("newgame");
 pvpbtn.addEventListener("click", function() {
     pvp()}, false);
@@ -59,3 +68,7 @@ pvpbtn.addEventListener("click", function() {
 let restartbtn = document.getElementById("pvp");
 restartbtn.addEventListener("click", function() {
     pvp()}, false);
+
+let aibtn = document.getElementById("pvai");
+aibtn.addEventListener("click", function() {
+    pvai()}, false);
