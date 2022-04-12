@@ -10,7 +10,7 @@
 
  const canvas = document.getElementById("canvas");
  const ctx = canvas.getContext("2d");
- import HumanPlayer from './human.js';
+ import HumanPlayer from './HumanPlayer.js';
 
  function makeBoard(){
      const yMax = 600;
