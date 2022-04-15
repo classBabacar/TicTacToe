@@ -10,7 +10,7 @@
 
  const canvas = document.getElementById("canvas");
  const ctx = canvas.getContext("2d");
-import AIPlayer from './AIPlayer.js';
+ import AIPlayer from './AIPlayer.js';
  import HumanPlayer from './HumanPlayer.js';
 
  function makeBoard(){
@@ -22,7 +22,7 @@ import AIPlayer from './AIPlayer.js';
      canvas.style.position = "absolute";
      canvas.width = yMax;
      canvas.height = xMax;
- 
+     canvas.style.border = "5px solid";
      ctx.beginPath();
      ctx.strokeStyle = 'blue';
 
