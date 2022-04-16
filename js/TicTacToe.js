@@ -61,12 +61,14 @@ class TicTacToe {
             }
         }
         ctx.beginPath();
-        ctx.strokeStyle = 'red';
         
         if(moveNumber % 2 == 0){
             // This makes an O.
+            ctx.strokeStyle = 'green';
             ctx.arc(startingX + 100, startingY + 100, 75, 0, Math.PI * 2, true); // Outer circle
         }else if(moveNumber % 2 == 1){
+            ctx.strokeStyle = 'red';
+
             // Top Left to Bottom Right Line
             ctx.moveTo(startingX + 25, startingY + 25);
             ctx.lineTo(startingX + 200 - 25, startingY + 200 - 25);
@@ -154,6 +156,74 @@ class TicTacToe {
         }
 
         return false;
+    }
+
+    whereToDrawWinningLine(board, moveNumber){
+        // 3 ways to win horizontally so rowIndexStart can return 0, 1, 2
+        let rowIndexStart = 0;
+
+        // 3 ways to win vertically but its after rowIndexStart can return 3, 4, 5
+        let colIndexStart = 3;
+
+        // 2 ways to win diagonally but after colIndexStart can return 6, 7
+        let topLeftToBottomRight = 6;
+        let topRightToBottomLeft = 7;
+
+        const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
+        for(let i = 0; i < 3; ++i){
+            if(board[i][0] == playerSymbol && board[i][1] == playerSymbol && board[i][2] == playerSymbol){
+                return this.drawWinningLine(rowIndexStart);
+            }
+            if(board[0][i] == playerSymbol && board[1][i] == playerSymbol && board[2][i] == playerSymbol){
+                return this.drawWinningLine(colIndexStart);
+            }
+
+            rowIndexStart++;
+            colIndexStart++;
+        }
+
+        if(board[0][0] == playerSymbol && board[1][1] == playerSymbol && board[2][2] == playerSymbol){
+            return this.drawWinningLine(topLeftToBottomRight);
+        }
+
+        if(board[2][0] == playerSymbol && board[1][1] == playerSymbol && board[0][2] == playerSymbol){
+            return this.drawWinningLine(topRightToBottomLeft);
+        }
+    }
+
+    drawWinningLine(indexToDrawLine){
+        ctx.beginPath();
+
+        let startingX = 0;
+        let startingY = 0;
+
+        if(indexToDrawLine <= 2){ // Horizontal Lines
+            startingY = 100;
+            for(let i = 0; i < indexToDrawLine; ++i){
+                startingY += 200;
+            }
+            ctx.moveTo(startingX, startingY);
+            ctx.lineTo(startingX + 600, startingY);
+        }else if(indexToDrawLine > 2 && indexToDrawLine <= 5){ // Vertical Lines
+            startingX = 100;
+            for(let i = 3; i < indexToDrawLine; ++i){
+                startingX += 200;
+            }
+            ctx.moveTo(startingX, startingY);
+            ctx.lineTo(startingX, startingY + 600);
+        }else if(indexToDrawLine == 6){ // Top Left to Bottom Right Diagonal
+            ctx.moveTo(startingX, startingY);
+            ctx.lineTo(startingX + 600, startingY + 600);
+        }else if(indexToDrawLine == 7){ // Top Right to Bottom Left Diagonal
+            startingX = 600;
+            startingY = 0;
+            ctx.moveTo(startingX, startingY);
+            ctx.lineTo(startingX - 600, startingY + 600);
+        }
+        ctx.strokeStyle = 'orange';
+        ctx.lineWidth = 10;
+
+        ctx.stroke();
     }
 
     getPlayerTurnResponse(moveNumber){
