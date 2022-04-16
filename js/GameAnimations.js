@@ -46,20 +46,23 @@
  }
 
  let playerObj;
- function pvp(){
+ async function pvp(){
+    toggleButtons(true);
     makeBoard();
     playerObj = new HumanPlayer("p1", "p2");
     playerObj.restart();
-    playerObj.play();
+    await playerObj.play();
+    toggleButtons(false);
  }
 
- function pvai(){
+ async function pvai(){
+    toggleButtons(true);
     makeBoard();
     playerObj = new AIPlayer("p1", "p2");
     playerObj.restart();
-    playerObj.AIplay();
+    await playerObj.AIplay();
+    toggleButtons(false);
  }
-
 
 let pvpbtn = document.getElementById("newgame");
 pvpbtn.addEventListener("click", function() {
@@ -72,3 +75,9 @@ restartbtn.addEventListener("click", function() {
 let aibtn = document.getElementById("pvai");
 aibtn.addEventListener("click", function() {
     pvai()}, false);
+
+function toggleButtons(isOn){
+    pvpbtn.disabled = isOn;
+    restartbtn.disabled = isOn;
+    aibtn.disabled = isOn;
+}
