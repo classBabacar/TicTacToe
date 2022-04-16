@@ -170,7 +170,7 @@ class TicTacToe {
 
     showTie(){
         const playerResponse = document.getElementById("playerReponse");
-        playerResponse.innerHTML = "THIS IS TIE...REMATCH!!!!!!!!!!!";
+        playerResponse.innerHTML = "THIS IS A TIE!!!!!!!!!!!";
     }
 
     restart(){

@@ -16,7 +16,7 @@ export default class HumanPlayer extends TicTacToe{
     }
     
     async play(){
-        while(!this.isGameOver(this.board, this.moveNumber - 1)  && !this.isTie(this.board)){
+        while(!this.isGameOver(this.board, this.moveNumber - 1) && !this.isTie(this.board)){
             this.getPlayerTurnResponse(this.moveNumber);
             let [x,y] = await this.getHumanMove();
             let position = this.boxSelection(x, y);
@@ -34,4 +34,4 @@ export default class HumanPlayer extends TicTacToe{
             this.showWinner(this.moveNumber - 1);
         }
     }
-}
+ }
