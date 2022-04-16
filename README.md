@@ -1,7 +1,7 @@
 # TicTacToe
 
 ## Description 
-- I will be making a simple game of tic tac toe and applying all the search algorithms(Monte Carlo, Minimax, etc..) to get a better grasp on the concepts. If I can make it on a simple game, I will understand more is my thought process.
+- I will be making a simple game of tic tac toe and applying all the search algorithms(Monte Carlo, Minimax, etc..) to get a better grasp on the concepts. If I can make it on a simple game, I will understand it more is my thought process.
 
 ## Search Algorithms Implemented Thus Far
 
