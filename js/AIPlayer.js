@@ -104,6 +104,7 @@ export default class AIPlayer extends TicTacToe{
             this.showTie()
         }else{
             this.showWinner(this.moveNumber - 1);
+            this.whereToDrawWinningLine(this.board, this.moveNumber - 1);
         }
     }
 }
