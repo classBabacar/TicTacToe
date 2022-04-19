@@ -63,12 +63,15 @@ export default class AIPlayer extends TicTacToe{
 
     gameStateCalculator(board){
         // Cheap heuristic -- If the center choose it but when the dfs search is smaller 
-       if(board[1][1] == '#'){
-           return 900000;
-       }else{
-        return -90;
+       if(board[1][1] == 'O'){
+           return 250;
        }
+
+       if(board[1][1] == 'X'){
+        return -250;
+        }
     }
+    
     getAvailablePostions(){
         let positionCount = 1;
         let positions = [];
@@ -92,7 +95,7 @@ export default class AIPlayer extends TicTacToe{
                 position = this.boxSelection(x, y);
             }
             if(this.moveNumber % 2 == 0){
-                let [move, bestValue] = this.generateAIMove(this.board,3, true);
+                let [move, bestValue] = this.generateAIMove(this.board, 3, true);
                 this.storeMove(this.moveNumber, move);
                 this.makeMove(move, this.moveNumber);
             }else if(this.moveNumber % 2 == 1 && position > 0 && this.isValidMove(position, this.board)){
