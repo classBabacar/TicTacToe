@@ -8,7 +8,7 @@ export default class AIPlayer extends TicTacToe{
             canvas.addEventListener("click", function(user){
                 canvas.removeEventListener("click", user);
                 const cRect = canvas.getBoundingClientRect();
-                const canvasX = Math.round(user.clientX - cRect.left);        // Subtract the 'left' of the canvas from the X/Y
+                const canvasX = Math.round(user.clientX - cRect.left);
                 const canvasY = Math.round(user.clientY - cRect.top);
                 resolve([canvasX, canvasY]);
             })
@@ -62,7 +62,7 @@ export default class AIPlayer extends TicTacToe{
     }
 
     gameStateCalculator(board){
-        // Cheap heuristic -- If the center choose it but when the dfs search is smaller 
+        // Cheap heuristic -- If the center is available, choose it but when the dfs search is smaller 
        if(board[1][1] == 'O'){
            return 250;
         }
