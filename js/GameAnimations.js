@@ -64,12 +64,8 @@
     toggleButtons(false);
  }
 
-let pvpbtn = document.getElementById("newgame");
+let pvpbtn = document.getElementById("pvp");
 pvpbtn.addEventListener("click", function() {
-    pvp()}, false);
-
-let restartbtn = document.getElementById("pvp");
-restartbtn.addEventListener("click", function() {
     pvp()}, false);
 
 let aibtn = document.getElementById("pvai");
@@ -78,6 +74,5 @@ aibtn.addEventListener("click", function() {
 
 function toggleButtons(isOn){
     pvpbtn.disabled = isOn;
-    restartbtn.disabled = isOn;
     aibtn.disabled = isOn;
 }
