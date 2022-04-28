@@ -61,7 +61,8 @@ class TicTacToe {
             }
         }
         ctx.beginPath();
-        
+        ctx.lineWidth = 12;
+
         if(moveNumber % 2 == 0){
             // This makes an O.
             ctx.strokeStyle = 'green';
@@ -239,18 +240,18 @@ class TicTacToe {
     getPlayerTurnResponse(moveNumber){
         const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
         const playerResponse = document.getElementById("playerReponse");
-        playerResponse.innerHTML = "It's Your Turn: " +  playerSymbol;
+        playerResponse.innerHTML = `Who's Turn: ${playerSymbol}`;
     }
 
     showWinner(moveNumber){
         const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
         const playerResponse = document.getElementById("playerReponse");
-        playerResponse.innerHTML = "YOU ARE THE WINNER: " +  playerSymbol;
+        playerResponse.innerHTML = `Congratulations! ${playerSymbol}, you are the winner! `;
     }
 
     showTie(){
         const playerResponse = document.getElementById("playerReponse");
-        playerResponse.innerHTML = "THIS IS A TIE!!!!!!!!!!!";
+        playerResponse.innerHTML = "This is a Tie. Play Another Game!";
     }
 
     restart(){
