@@ -226,6 +226,16 @@ class TicTacToe {
         ctx.stroke();
     }
 
+    drawTieLine(){
+        ctx.beginPath();
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 15;
+
+        // Unit Cirle (2*Math.PI = 2π) -- Using this you can draw a cicle with correct radians
+        ctx.arc(300, 300, 275, (Math.PI)/6, (11 * Math.PI)/6, false);
+        ctx.stroke();
+    }
+
     getPlayerTurnResponse(moveNumber){
         const playerSymbol = moveNumber % 2 == 0 ? 'O' : 'X';
         const playerResponse = document.getElementById("playerReponse");
