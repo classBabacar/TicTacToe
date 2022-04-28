@@ -50,7 +50,7 @@
     toggleButtons(true);
     makeBoard();
     playerObj = new HumanPlayer("p1", "p2");
-    playerObj.restart();
+    playerObj.resetGame();
     await playerObj.play();
     toggleButtons(false);
  }
@@ -59,7 +59,7 @@
     toggleButtons(true);
     makeBoard();
     playerObj = new AIPlayer("p1", "p2");
-    playerObj.restart();
+    playerObj.resetGame();
     await playerObj.AIplay();
     toggleButtons(false);
  }

@@ -254,7 +254,7 @@ class TicTacToe {
         playerResponse.innerHTML = "This is a Tie. Play Another Game!";
     }
 
-    restart(){
+    resetGame(){
         this.board = [
             ['#', '#', '#'],
             ['#', '#', '#'],
